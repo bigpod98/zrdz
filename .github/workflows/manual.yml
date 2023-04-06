@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Generate ISO  
-        uses: ublue-os/isogenerator@main
+        uses: bigpodInternal/isogenerator@main
         id: isogenerator
         with:
           image-name: universalblue-38
