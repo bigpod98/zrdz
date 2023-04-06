@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - main
+      
+name: release-please
+jobs:
+  build-iso:
+    name: Generate and Release ISOs
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate ISO  
+        uses: ublue-os/isogenerator@main
+        id: isogenerator
+        with:
+          image-name: universalblue-38
+          installer-repo: development
+          installer-major-version: 38
+      - run: cat ${{ steps.isogenerator.outputs.sha256sum-path }}
+        shell: bash
+          
